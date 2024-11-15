@@ -1,0 +1,17 @@
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv() 
+
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT") 
+POSTGRES_DATABASE = os.environ.get("POSTGRES_DATABASE")
+POSTGRES_USERNAME = os.environ.get("POSTGRES_USERNAME")
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+DATABASE_URL = f"postgresql+asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DATABASE}"
+REDIS_HOST = os.getenv("REDIS_HOST")
+SECRET_KEY = os.getenv("SECRET_KEY")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
+REFRESH_TOKEN_EXPIRE_DAYS = int(os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS"))
+ALGORITHM = os.environ.get("ALGORITHM")

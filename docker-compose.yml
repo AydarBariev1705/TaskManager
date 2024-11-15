@@ -1,0 +1,31 @@
+services:
+  # web:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - task_postgres
+  #     - task_redis
+
+  task_postgres:
+    image: postgres:latest
+    container_name: task_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tasks_db
+    volumes:
+      - ./postgres_db/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  task_redis:
+    image: redis:alpine
+    container_name: task_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

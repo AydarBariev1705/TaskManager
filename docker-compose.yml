@@ -1,11 +1,12 @@
 services:
-  # web:
-  #   build: .
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - task_postgres
-  #     - task_redis
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - task_postgres
+      - task_redis
+    restart: on-failure
 
   task_postgres:
     image: postgres:latest
